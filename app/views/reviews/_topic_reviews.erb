@@ -1,0 +1,35 @@
+<div class="reviews">
+<% @topics_reviews.each do |topic, reviews| %>
+    <div class="span12 offset0 well">
+      <h3 class="box-title"><%= "#{topic.title} - #{topic.scheduled_start.to_s(:long_ordinal)}" %></h3>
+      <% unless reviews.empty? %>
+        <% reviews.each do |review| %>
+            <div class="well">
+                <div>Rating:
+                  <% review.rating.times do %>
+                      <i class="icon-star"></i>
+                  <% end %>
+                  <% (5 - review.rating).times do %>
+                      <i class="icon-star-empty"></i>
+                  <% end %>
+                  <% if review.user == current_user %>
+                      <%= link_to edit_topic_review_path(topic,review), :title => 'Edit Topic', :'data-pjax' => true do %>
+                          <i class="icon-edit"></i>
+                      <% end %>
+                      <%= link_to topic_review_path(topic, review), :method => :delete, :title => 'Delete Topic',  :'data-pjax' => true, :data => { confirm: 'Are you sure?' } do %>
+                          <i class="icon-remove-sign"></i>
+                      <% end %>
+                  <% end %>
+
+                </div>
+                <pre style="text-align: left;font-family: verdana;"><%= review.review %></pre>
+            </div>
+        <% end %>
+      <% else %>
+          No reviews yet
+      <% end %>
+    </div>
+<% end.empty? && if true %>
+  No reviews
+<% end %>
+</div>

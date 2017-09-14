@@ -1,0 +1,61 @@
+<div class="floating"><%= flash_messages %></div>
+<div class="topic_heading">
+  <%= link_to new_topic_path, 'data-pjax' => true do %>
+    <button class="btn btn-success">New Topic</button>
+  <% end if user_signed_in? %>
+  <div style="clear: both;"></div>
+</div>
+<% if @topics.empty?%>
+    <div>There are no topics which can be scheduled. Please submit one <%= 'after logging in.' unless user_signed_in?%></div>
+<% else %>
+<table class="table table-striped topics">
+  <tr>
+    <th>Title</th>
+    <th>Presenter</th>
+    <th>Duration</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @topics.each do |topic| %>
+  <tr>
+    <td>
+      <div>
+        <%= topic.title %>
+        <%= more_box do %>
+            <br><%= topic.description %>
+        <% end %>
+      </div>
+      <div>
+        <% topic.tags.each do |tag| %>
+            <span class="label" style="background-color:<%= random_color %>"><%= tag.name %></span>
+        <% end %>
+
+      </div>
+    </td>
+
+    <td><%= topic.presenter && topic.presenter.email %></td>
+    <td><%= topic.duration %> minutes</td>
+    <td class="votes"><span class="label" style="<%= vote_count_style(topic) %>"><%= topic.votes.size%> votes</span></td>
+    <td class="actions">
+        <%= link_to upvote_topic_path(topic), :title => 'Vote Up',  :'data-pjax' => true, :method => :put do %>
+            <i class="icon-thumbs-up"></i>
+        <% end %>
+        <% if topic.creator == current_user || user_is_admin? %>
+          <%= link_to edit_topic_path(topic), :title => 'Edit Topic', :'data-pjax' => true do %>
+              <i class="icon-edit"></i>
+          <% end %>
+          <%= link_to topic, :method => :delete, :title => 'Delete Topic',  :'data-pjax' => true, :data => { confirm: 'Are you sure?' } do %>
+              <i class="icon-remove-sign"></i>
+          <% end %>
+          <%= link_to schedule_topic_path(topic), :title => 'Schedule this topic', :'data-pjax' => true do %>
+              <i class="icon-calendar"></i>
+          <% end if user_is_admin? %>
+        <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<br />

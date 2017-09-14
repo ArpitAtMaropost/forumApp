@@ -1,0 +1,11 @@
+<% title = @topic.class.name.underscore.split('_').collect{|x| x.classify}.join(' ')  %>
+<%= boxed_form((@topic.new_record? ? 'New ':'Edit ') + title) do %>
+    <%= simple_form_for(@topic, :html => {:'data-pjax' => 'true'}) do |f| %>
+        <%= flash_messages %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.association :tags, :as => :select, :multiple => true, :preload => true %>
+        <%= f.input :duration, :as => :select, :collection => (5..120).step(5).collect{|x| ["#{x} Minutes", x]}, :include_blank => false %>
+        <%= f.button :submit %>
+    <% end %>
+<% end %>

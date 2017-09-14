@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+      <title>MaroPostForum</title>
+      <%= stylesheet_link_tag    "application", :media => "all" %>
+      <%= javascript_include_tag "application" %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body pjax-id="<%= rand(1000) %>">
+        <%= render 'shared/header'%>
+        <div class="container">
+          <%= render 'shared/toplinks' %>
+          <div id="pjax-container">
+            <div id="background-wrap">
+              <div class="x1">
+                <div class="cloud"></div>
+              </div>
+
+              <div class="x2">
+                <div class="cloud"></div>
+              </div>
+
+              <div class="x3">
+                <div class="cloud"></div>
+              </div>
+
+              <div class="x4">
+                <div class="cloud"></div>
+              </div>
+
+              <div class="x5">
+                <div class="cloud"></div>
+              </div>
+            </div>
+            <%= yield %>
+          </div>
+        </div>
+        <%= render 'shared/footer' unless @no_footer %>
+    </body>
+</html>

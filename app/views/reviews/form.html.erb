@@ -1,0 +1,9 @@
+<div class="floating"><%= flash_messages %></div>
+<% url = @review.new_record? ? topic_reviews_path(:topic_id => @review.topic_id) : topic_review_path(@review.topic, @review) %>
+<%= boxed_form("Review for #{@review.topic.title}") do %>
+    <%= simple_form_for(@review, :url => url, :html => {:'data-pjax' => 'true'}) do |f| %>
+      <%= f.input :rating, :as => :select, :collection => (1..5).collect{|x| ["#{x} Stars", x]}, :include_blank => false %>
+      <%= f.input :review %>
+      <%= f.button :submit %>
+    <% end %>
+<% end %>

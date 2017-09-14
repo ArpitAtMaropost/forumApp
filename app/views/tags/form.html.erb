@@ -1,0 +1,8 @@
+<%= boxed_form(@tag.new_record? ? 'New Tag':'Edit Tag') do %>
+    <%= simple_form_for(@tag, :html => {:'data-pjax' => 'true'}) do |f| %>
+        <%= flash_messages %>
+        <%= f.input :name %>
+        <%= f.button :submit %>
+    <% end %>
+<% end %>
+

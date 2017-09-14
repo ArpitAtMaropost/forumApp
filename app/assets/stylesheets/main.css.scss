@@ -1,0 +1,114 @@
+body{
+margin-top: 40px;
+  .controls textarea{
+    height: 150px;
+  }
+}
+
+.navbar-search .search-query {
+  background: #DDD;
+  color: black;
+  ::-webkit-input-placeholder{
+    color: black;
+  }
+ :-moz-placeholder{
+    color: black;
+  }
+  &:hover{
+    color: black;
+    background-color: #f0f0f0;
+    //background-color: rgba(255, 255, 255, 0.5);
+  }
+  &:focus
+  {
+    color: black;
+    background-color: #fff;
+  }
+}
+
+div.disqus_comment_count{
+  font-size: 10px;
+  float: right;
+}
+
+$box_title_color: #FF8080;
+$box_grad_color: darken($box_title_color, 4%);
+
+.box-title {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  background: #829AA8;
+  background: -moz-linear-gradient($box_title_color, $box_grad_color);
+  background: -webkit-linear-gradient($box_title_color, $box_grad_color);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#829aa8',endColorstr='#405a6a')";
+  border: 1px solid $box_grad_color;
+  border-bottom-color: $box_title_color;
+  border-radius: 3px 3px 0 0;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
+  margin: -20px -20px 10px -20px;
+  padding: 5px 20px;
+}
+
+footer{
+  position:relative;
+  bottom:0;
+  width: 100%;
+  height:30px;   /* Height of the footer */
+  text-align: center;
+  .footer{
+    display: inline-block;
+    width: 960px;
+    text-align: left;
+  }
+}
+
+.datetimepicker-container{
+  .datetimepicker{
+    float : left;
+    display: block;
+    font-size: 0px;
+    height: 30px;
+    line-height: 0px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    input[type=text]{
+      width: 200px;
+      font-weight: bold;
+    }
+    .add-on.not-last{
+      border-radius: 0;
+    }
+  }
+  .unscheduled-container{
+    float : left;
+    margin-left: -1px;
+  .unscheduled-add-on{
+    display: inline-block;
+    width: auto;
+    height: 20px;
+    min-width: 16px;
+    padding: 4px 5px;
+    font-weight: normal;
+    line-height: 20px;
+    text-align: center;
+    text-shadow: 0 1px 0 white;
+    vertical-align: middle;
+    background-color: whitesmoke;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+    widows: auto;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    input[type=checkbox]{
+      margin: 0;
+    }
+    .checkbox-label{
+      padding-left: 5px;
+    }
+  }
+  }
+}

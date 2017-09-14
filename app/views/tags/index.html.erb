@@ -1,0 +1,34 @@
+<div class="floating"><%= flash_messages %></div>
+<div class="topic_heading">
+  <h2>Tags</h2>
+  <%= link_to new_tag_path, :'data-pjax' => true do %>
+      <button class="btn btn-success">New Tag</button>
+  <% end if user_is_admin? %>
+  <div style="clear: both;"></div>
+</div>
+<table class="table table-striped topics">
+  <tr>
+    <th>Name</th>
+    <th>Topics</th>
+    <th></th>
+  </tr>
+  <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.name %></td>
+        <td class="votes"><span class="label" style="<%= tag_count_style(tag.topics.size) %>"><%= tag.topics.size%> topics</span></td>
+        <td class="actions">
+          <% if user_is_admin? %>
+              <%= link_to edit_tag_path(tag), :title => 'Edit Tag', :'data-pjax' => true do %>
+                  <i class="icon-edit"></i>
+              <% end %>
+              <%= link_to tag, :method => :delete, :title => 'Delete Tag', :data => { confirm: 'Are you sure?' }, :'data-pjax' => true do %>
+                  <i class="icon-remove-sign"></i>
+              <% end %>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+

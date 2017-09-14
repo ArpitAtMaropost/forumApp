@@ -1,0 +1,17 @@
+<%= boxed_form('Schedule Topic') do %>
+    <%= simple_form_for(@topic, :url => schedule_topic_path, :html => {:'data-pjax' => 'true'}) do |f| %>
+        <%= flash_messages %>
+        <div class="control-group">
+            <span>Title: </span><span><b><%= @topic.title %></b></span>
+        </div>
+        <div class="control-group">
+        <span>Presenter: </span><span><b><%= @topic.creator.email %></b></span>
+        </div>
+        <div class="control-group">
+          <span>Duration: </span><span><b><%= @topic.duration %> minutes</b></span>
+        </div>
+
+        <%= f.input :scheduled_start, :as => :bootstrap_datetime, :unschedule_button => true %>
+        <%= f.button :submit, :label => 'Schedule' %>
+    <% end %>
+<% end %>

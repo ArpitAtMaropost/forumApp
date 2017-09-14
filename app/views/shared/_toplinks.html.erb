@@ -1,0 +1,15 @@
+<ul class="nav nav-pills">
+  <% ['general', 'project', 'scheduled', 'past'].each do |t| %>
+      <li class="<%= 'active' if current_page?(send(:"#{t}_topics_path")) %>">
+        <%= link_to "#{t.capitalize } Topics", send(:"#{t}_topics_path"), :'data-pjax' => true %>
+      </li>
+  <% end %>
+  <% ['posted', 'received'].each do |t| %>
+    <li class="<%= 'active' if current_page?(send(:"reviews_#{t}_path")) %>">
+        <%= link_to "Reviews #{t.capitalize }", send(:"reviews_#{t}_path"), :'data-pjax' => true %>
+    </li>
+  <% end %>
+  <li class="<%= 'active' if current_page?(tags_path) %>">
+    <%= link_to "Tags", tags_path, :'data-pjax' => true %>
+  </li>
+</ul>

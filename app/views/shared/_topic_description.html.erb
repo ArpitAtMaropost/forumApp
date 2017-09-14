@@ -1,0 +1,36 @@
+<div class="topic_description">
+  <div class="top_box">
+  <span class="picture">
+    <img src="" title="<%= topic.presenter.email%>"/>
+  </span>
+  <span class="desc_box">
+
+    <span class="name">
+        <%= topic.presenter.name %>
+    </span>
+    <br>
+    <span class="title_text">
+      <%= topic.title %>
+    </span>
+
+    <% if user_is_admin? %>
+        <div class="admin_links">
+          <%= link_to edit_topic_path(topic), :title => 'Edit Topic', :'data-pjax' => true do %>
+              <i class="icon-edit"></i>
+          <% end %>
+        <%= link_to topic, :method => :delete, :title => 'Delete Topic',  :'data-pjax' => true, :data => { confirm: 'Are you sure?' } do %>
+              <i class="icon-remove-sign"></i>
+          <% end %>
+        <%= link_to schedule_topic_path(topic), :title => 'Schedule this topic', :'data-pjax' => true do %>
+              <i class="icon-calendar"></i>
+          <% end if user_is_admin? %>
+          </div>
+        <% end %>
+
+  </span>
+    <div style="clear:both"></div>
+  </div>
+  <div class="description_text">
+    <%= topic.description %>
+  </div>
+</div>

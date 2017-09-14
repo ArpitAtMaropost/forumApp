@@ -1,0 +1,42 @@
+<div><%= flash_messages %></div>
+<div class="topic_heading">
+  <div style="clear: both;"></div>
+</div>
+<% if @topic_groups.empty?%>
+    <div>There are no past topics yet. </div>
+<% else %>
+    <% @topic_groups.each do |date, topics| %>
+    <table class="table table-striped topics">
+      <tr>
+        <th><%= date.to_s(:long_ordinal) %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% topics.each do |topic| %>
+      <tr>
+        <td>
+          <div>
+            <%= topic.title %>
+            <%= more_box do %>
+                <br><%= topic.description %>
+            <% end %>
+          </div>
+          <div>
+            <% topic.tags.each do |tag| %>
+                <span class="label" style="background-color:<%= random_color %>"><%= tag.name %></span>
+            <% end %>
+          </div>
+        </td>
+        <td><%= topic.presenter && topic.presenter.name %></td>
+        <td><%= topic.scheduled_start.strftime('%l:%M%P') %> <%= topic.duration %>m</td>
+        <td class="actions">
+            <%= link_to(new_topic_review_path(topic), :'data-pjax' => true, :title => 'Rate Title') do %>
+                Rate This Topic
+            <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <% end %>
+<% end %>

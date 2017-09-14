@@ -1,0 +1,20 @@
+<div class="floating"><%= flash_messages %></div>
+<h2>Scheduled Talks</h2>
+
+<% if @topic_groups.empty? %>
+  No scheduled Topics yet
+<% else %>
+    <% @topic_groups.each do |date, topics| %>
+        <div class="scheduled">
+            <div class="span12 offset0 well">
+              <h3 class="box-title"><%= date.to_s(:long_ordinal) %></h3>
+              <div class="timeline-container">
+                 <%= topics_timeline(topics) %>
+                 <div style="clear:both"></div>
+              </div>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
+

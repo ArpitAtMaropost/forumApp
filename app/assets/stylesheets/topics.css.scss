@@ -1,0 +1,161 @@
+// Place all the styles related to the topics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.topic_heading{
+  padding-bottom: 10px;
+  clear: both;
+
+  h2{
+    float: left;
+  }
+  button{
+    float: right;
+  }
+}
+
+table.topics{
+  border: 1px solid gainsboro;
+  span.hidden_more{
+    font-size: 0.8em;
+  }
+  th:nth-child(1){
+    color: #ffc40d !important;
+    width: 350px;
+  }
+  &.project th:nth-child(1){
+    color: #049cdb !important;
+    width: 450px;
+  }
+  th:nth-child(2){
+    color: #46a546 !important;
+    width: 150px;
+  }
+  th:nth-child(3){
+    color: #a54646 !important;
+    width: 80px;
+  }
+  tr:nth-child(1), tr:nth-child(2), tr:nth-child(3){
+    .hot{
+      display: block;
+    }
+  }
+  td{
+    word-break: break-word;
+    word-wrap: break-word;
+  }
+  td.actions{
+    text-align: right;
+  }
+
+  span{
+    &.hot{
+      background-color: brown;
+    }
+    &.rising{
+      background-color: greenyellow;
+    }
+    &.new{
+      background-color: #3a87ad;
+    }
+  }
+}
+
+.pjax-loading {
+  position: fixed;
+  right: 50%;
+  top: 50%;
+  padding: 14px;
+  display: block;
+  z-index: 200000;
+  font-size: 20px;
+  font-weight: bold;
+  background: black;
+  opacity: 0.8;
+  -moz-box-shadow: 0 0 4px #000;
+  -webkit-box-shadow: 0 0 4px #000;
+  box-shadow: 0 0 4px #000;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  img{
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.floating {
+  position: fixed;
+  width: 100%;
+  left: 0px;
+  top: 40px;
+  z-index: 100000;
+  text-align: center ;
+  opacity: 0.8;
+  .alert{
+    display: inline-block;
+    font: normal 20px/50px Helvetica, Arial, Sans-Serif;
+    letter-spacing: -1px;
+    -moz-box-shadow: 0 0 4px #000;
+    -webkit-box-shadow: 0 0 4px #000;
+    box-shadow: 0 0 4px #000;
+
+  }
+}
+
+.scheduled{
+  .well{
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  .timeline-container{
+    .admin_links{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
+    padding: 190px 0;
+    width: 100%;
+    position: relative;
+    .timeline{
+      position: relative;
+      background-color: #222;
+      height:  60px;
+      opacity: 0.9;
+      .schedule{
+
+        position: absolute;
+        color: white;
+
+        font-weight: bold;
+        float:left;
+        height: 40px;
+        padding: 10px 0;
+        opacity: 1;
+        span{
+          padding: 0 5px;
+          overflow: hidden;
+
+        }
+      }
+      &:after{
+        clear: both;
+        content: "";
+      }
+    }
+    .tipsy{
+
+    }
+    .tipsy-n{
+      top: 250px;
+      padding: 0px;
+      padding-top: 5px;
+    }
+    .tipsy-s{
+      top: 25px;
+      padding: 0px;
+      padding-bottom: 5px;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+/* High level containers */
+@import "bootstrap/_variables.css.scss";
+@import "bootstrap";
+@import "bootstrap/bootwatch.css.scss";
+
+body > .container{
+  margin-top: 80px;
+  min-height: 800px;
+}
+
+.nav-pills .active > a, .nav-pills .active > a:hover {
+  color: white;
+  background-color: #000;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover,
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF2FA4E7', endColorstr='#FF1A99E2', GradientType=0);
+}
+
+// Active nav items
+.navbar .nav .dropdown.active > a, .navbar .nav .dropdown.active > a:hover {
+  color: $navbarLinkColorHover;
+  text-decoration: none;
+  background-color: $navbarBackground;
+}
+
+.navbar .nav li.dropdown .dropdown-toggle .caret, .navbar .nav li.dropdown.open .caret {
+  border-top-color: $grayDarker;
+  border-bottom-color: $grayDarker;
+}
+
+
+.navbar-search .search-query {
+  background: #DDD;
+  border: none;
+  color: black;
+  ::-webkit-input-placeholder{
+    color: black;
+  }
+  :-moz-placeholder{
+    color: black;
+  }
+  &:hover{
+    color: black;
+    background-color: #f0f0f0;
+    //background-color: rgba(255, 255, 255, 0.5);
+  }
+  &:focus
+  {
+    color: black;
+    background-color: #fff;
+  }
+}
+
+.navbar .nav > li > a.external_profile_link{
+  img{
+    border: none;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.well{
+  input[type=text], input[type=password], textarea {
+    width: 95%;
+    resize: none;
+  }
+}
